@@ -1,26 +1,29 @@
-import { Card } from "@material-tailwind/react";
+/* eslint-disable react/no-unescaped-entities */
+import { Button, Card } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
-    return (
-        <>         
-        <Card className="mb-12 overflow-hidden">
+  return (
+    <>
+      <Card className="mb-12 overflow-hidden">
+        <div className="md:flex flex-row bg-blue-100">
+          <div color="blue-gray" className="mb-2 md:w-1/2 text-center">
+            <div className="text-center lg:mx-16 lg:my-10 flex justify-center items-center pt-20">
+              <h1> <span className="text-3xl text-black font-semibold py-2"> ToDo Pulse </span> <br />intelligently analyzes your task deadlines and provides timely reminders. Receive notifications when a task is approaching its due date or when you've successfully completed a task.</h1>
+            </div>
+           <Link to="/login"> <Button className="mt-4 py-4 lg:mt-0">explore Now</Button></Link>
+          </div>
           <img
             alt="nature"
-            className="h-[32rem] w-full object-cover object-center"
-            src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
+            className="md:w-1/2 p-10"
+            src="https://i.ibb.co/KmzVh3k/todopic1-removebg-preview.png"
           />
-        </Card>
-        <div  color="blue-gray" className="mb-2">
-          What is Material Tailwind
         </div>
-        <div color="gray" className="font-normal">
-          Can you help me out? you will get a lot of free exposure doing this
-          can my website be in english?. There is too much white space do less        
-          
-        </div>
-      </>
-     
-    );
+      </Card>
+
+    </>
+
+  );
 };
 
 export default Banner;

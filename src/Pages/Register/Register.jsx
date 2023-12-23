@@ -9,6 +9,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
 
@@ -105,15 +106,7 @@ const Register = () => {
 
                     <input className='bg-black mt-4 py-2 rounded-md text-white w-full' value="Register" type="submit" />
                 </form>
-                <Button
-                    size="lg"
-                    variant="outlined"
-                    color=""
-                    className="flex font-normal justify-center normal-case bg-black p-2 text-white text-center items-center gap-3"
-                >
-                    <img src="https://docs.material-tailwind.com/icons/google.svg" alt="metamask" className="h-6 w-6" />
-                    Continue with Google
-                </Button>
+               <SocialLogin></SocialLogin>
 
                 <Typography color="gray" className="mt-4 text-center font-normal">
                     Create an account?{" "}

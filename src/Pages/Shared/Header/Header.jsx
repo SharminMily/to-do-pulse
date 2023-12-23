@@ -29,7 +29,10 @@ const Header = () => {
     const navList = (
       <ul className="mt-6 mb-4 flex text-black flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
        <li> <NavLink to="/">Home</NavLink></li>
+       {/* <li> <NavLink to="/taskManagement">Task Management</NavLink></li>       */}
+       <li> <NavLink to="/dashboard">Dashboard</NavLink></li>      
        <li> <NavLink to="/blogs">Blogs</NavLink></li>      
+       <li> <NavLink to="/contactUs">contact Us</NavLink></li>      
         {/* <li>
             <NavLink to='/blogs' className="text-white bg-gradient-to-r from-pink-300 via-pink-700 to-pink-200 
       hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-300/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Blogs
