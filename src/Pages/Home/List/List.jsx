@@ -8,7 +8,7 @@ const List = () => {
             </div>
             <div className="">
                 <img className="h-[40vh]" src="https://i.ibb.co/N1Y0rMh/online-Survey.png" />
-                <h1 className="text-center font-bold">Online Survey</h1>
+                <h1 className="text-center font-bold text-pink-800">Online Survey</h1>
             </div>
             <div className="">
                 <img className="h-[40vh]" src="https://i.ibb.co/gj5kxfy/feedback.png" />

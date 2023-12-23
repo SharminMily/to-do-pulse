@@ -11,6 +11,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
     const handleLogOut = () => {
         logOut()
         .then(() => {})
@@ -54,15 +55,25 @@ const Header = () => {
               </Button>
               </Link> 
         </li>}
-{/* 
-        <li> <Link to="/login">
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"> Login                
-              </Button>
-              </Link> 
-        </li> */}
+
+        <li> 
+             {/* login,logout, user */}
+             <div>
+                    {user?.email ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img className="rounded-full" src={user.photoURL} alt={user.displayName} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="">                            
+                               
+                        </ul>
+                    </div>
+                        :
+                        <NavLink to="/login"></NavLink>
+                    }
+                  </div>   
+        </li>
 
       </ul>
     );

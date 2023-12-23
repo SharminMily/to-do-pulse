@@ -7,16 +7,19 @@ import {
 } from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Register = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser } = useContext(AuthContext);
     // const [loginError, setLoginError] = useState('');
+
     const location = useLocation();
+    const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
@@ -26,7 +29,17 @@ const Register = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
+                Swal.fire({
+                    title: 'User Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });          
             })
             .catch(error => console.log(error));
 
@@ -40,7 +53,20 @@ const Register = () => {
         //         console.log(error.message)
         //         setLoginError(error.message);
         //     });
+    
+        fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
     }
+
 
     return (
         <div className=" flex justify-center items-center my-10 mx-20">
@@ -81,6 +107,22 @@ const Register = () => {
                             })}
                             size="lg"
                             placeholder="name@mail.com"
+                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+                            labelProps={{
+                                className: "before:content-none after:content-none",
+                            }}
+                        />
+                        {/* photoURL */}
+                        <div color="blue-gray" className="-mb-3 font-bold">
+                            Photo url
+                        </div>
+                        <Input
+                            type="text"
+                            {...register("photoURL", {
+                                required: "photoURL Address is required"
+                            })}
+                            size="lg"
+                            placeholder="Your Photo url"
                             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                             labelProps={{
                                 className: "before:content-none after:content-none",

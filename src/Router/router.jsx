@@ -14,6 +14,9 @@ import ToDoList from "../Pages/Dashboard/ToDoList/ToDoList";
 import CreateTask from "../Pages/Dashboard/CreateTask/CreateTask";
 import Ongoing from "../Pages/Dashboard/Ongoing/Ongoing";
 import Completed from "../Pages/Dashboard/Completed/Completed";
+import EditToDoList from "../Pages/Dashboard/ToDoList/EditToDoList";
+import UserProfile from "../Pages/Dashboard/Dashboard/UserProfile/UserProfile";
+import RouterPrivate from "./RouterPrivate";
 
 
   export const router = createBrowserRouter([
@@ -51,8 +54,12 @@ import Completed from "../Pages/Dashboard/Completed/Completed";
     },
     {
       path: "dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <RouterPrivate><Dashboard></Dashboard></RouterPrivate>,
       children: [
+        {
+          path: "userProfile",
+          element: <UserProfile></UserProfile>
+        },        
         {
           path: "createTask",
           element: <CreateTask></CreateTask>
@@ -61,6 +68,12 @@ import Completed from "../Pages/Dashboard/Completed/Completed";
           path: "toDoList",
           element: <ToDoList></ToDoList>
         },
+        {
+          path: "editToDoList/:id",
+          element: <EditToDoList></EditToDoList>,
+          loader: ({ params }) => fetch(`http://localhost:5000/tasks/${params.id}`)
+        },
+
         {
           path: "ongoing",
           element: <Ongoing></Ongoing>
